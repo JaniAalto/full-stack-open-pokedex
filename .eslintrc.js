@@ -1,8 +1,9 @@
 module.exports = {
   "env": {
-    "browser": true,
+    //"browser": true,
     "es6": true,
-    "jest/globals": true
+    "jest/globals": true,
+    'node': true
   },
   "extends": [
     "eslint:recommended",
@@ -45,5 +46,8 @@ module.exports = {
     ],
     "no-console": "error",
     "react/prop-types": 0
+  },
+  "globals": {
+    "document": true
   }
 }
