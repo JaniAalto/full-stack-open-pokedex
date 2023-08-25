@@ -36,5 +36,5 @@ jobs:
       - name: Render deployment
         uses: bounceapp/render-action@0.6.0
         with:
-          service-id: ${{ secrets.SERVICE_ID }}
-          render-token: ${{ secrets.RENDER_TOKEN }}
+          service-id: ${{ SERVICE_ID }}
+          render-token: ${{ RENDER_TOKEN }}
