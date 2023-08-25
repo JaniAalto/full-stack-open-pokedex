@@ -17,6 +17,10 @@ jobs:
       - name: Install dependencies 
         run: npm install  
 
+      - name: Try to print env variable
+        run: |
+          echo ${{ env.SERVICE_ID }} ${{ secrets.SERVICE_ID }}
+
       - name: Check style
         run: npm run eslint
         
@@ -36,5 +40,5 @@ jobs:
       - name: Render deployment
         uses: bounceapp/render-action@0.6.0
         with: 
-          service-id: ${{ process.env.SERVICE_ID }}
-          render-token: ${{ process.env.RENDER_TOKEN }}
+          service-id: ${{ env.SERVICE_ID }}
+          render-token: ${{ env.RENDER_TOKEN }}
