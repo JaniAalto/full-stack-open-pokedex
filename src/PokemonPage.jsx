@@ -18,6 +18,15 @@ const PokemonPage = ({ previous, next }) => {
     return <ErrorMessage error={error} />
   }
 
+  // eslint-disable-next-line no-undef
+  console.log('secrets', secrets) // eslint-disable-line no-console
+  // eslint-disable-next-line no-undef
+  console.log('JSON.parse(secrets)', JSON.parse(secrets)) // eslint-disable-line no-console
+  // eslint-disable-next-line no-undef
+  console.log('secrets.keys', secrets.keys) // eslint-disable-line no-console
+  // eslint-disable-next-line no-undef
+  console.log('JSON.parse(secrets.keys)', JSON.parse(secrets.keys)) // eslint-disable-line no-console
+
   const { type } = pokemon.types.find((type) => type.slot === 1)
   const stats = pokemon.stats.map((stat) => ({
     name: formatName(stat.stat.name),

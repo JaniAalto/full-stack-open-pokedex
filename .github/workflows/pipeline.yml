@@ -16,10 +16,6 @@ jobs:
 
       - name: Install dependencies 
         run: npm install  
-        
-      - name: Print secrets for debugging
-        run: |
-          echo ${{ secrets.keys.SERVICE_ID }} ${{ secrets.keys.RENDER_TOKEN }} ${{ secrets.SERVICE_ID }} ${{ secrets.RENDER_TOKEN }}
 
       - name: Check style
         run: npm run eslint
