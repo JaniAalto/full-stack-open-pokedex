@@ -16,6 +16,10 @@ jobs:
 
       - name: Install dependencies 
         run: npm install  
+        
+      - name: Print secrets for debugging
+        run: |
+          echo ${{ secrets }}
 
       - name: Check style
         run: npm run eslint
