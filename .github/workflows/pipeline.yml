@@ -34,7 +34,7 @@ jobs:
           wait-on: http://localhost:5000
 
       - name: Render deployment
-        uses: bounceapp/render-action@0.6.0
+        uses: bounceapp/render-action@0.7.0
         with: 
-          service-id: srv-cjjca8r37aks73c0o6bg
           render-token: rnd_mbSiIRXfmNEII2AGkkM2Hn7qboFy
+          service-id: srv-cjjca8r37aks73c0o6bg
