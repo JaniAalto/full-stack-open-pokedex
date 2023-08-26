@@ -38,7 +38,7 @@ jobs:
           wait-on: http://localhost:5000
 
       - name: Render deployment
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && contains(github.event.commits.message, '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
         with: 
           service-id: ${{ secrets.SERVICE_ID }}
@@ -54,7 +54,7 @@ jobs:
           node-version: '16'
 
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' && contains(github.event.commits.message, '#skip') }}
         uses: anothrNick/github-tag-action@1.67.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

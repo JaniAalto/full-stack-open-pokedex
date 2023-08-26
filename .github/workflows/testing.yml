@@ -9,7 +9,7 @@ jobs:
   a_test_job:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: github context
         env:
@@ -23,10 +23,15 @@ jobs:
 
       - name: commit messages
         env:
-          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.message) }}
         run: echo "$COMMIT_MESSAGES"
 
-      - name: github context
+      - name: render token
         env:
-          RENDER_TOKEN: ${{ toJson(secrets.RENDER_TOKEN) }}
+          RENDER_TOKEN: ${{ toJson(env.RENDER_TOKEN) }}
+        run: echo "$RENDER_TOKEN"
+        
+      - name: render secrets
+        env:
+          RENDER_TOKEN: ${{ toJson(secrets) }}
         run: echo "$RENDER_TOKEN"
