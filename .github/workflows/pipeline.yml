@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - master
-  pull_request:    
-    branches: [master]    
-    types: [opened, synchronize]
 
 jobs:
   simple_deployment_pipeline:
-    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -40,5 +36,5 @@ jobs:
       - name: Render deployment
         uses: johnbeynon/render-deploy-action@v0.0.8
         with: 
-          service-id: ${{ env.SERVICE_ID }}
-          api-key: ${{ env.RENDER_TOKEN }}
+          service-id: srv-cjjca8r37aks73c0o6bg
+          api-key: ${{ secrets.RENDER_TOKEN }}
