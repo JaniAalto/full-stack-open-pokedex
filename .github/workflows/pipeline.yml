@@ -37,4 +37,4 @@ jobs:
         uses: johnbeynon/render-deploy-action@v0.0.8
         with: 
           service-id: srv-cjjca8r37aks73c0o6bg
-          api-key: ${{ secrets.RENDER_TOKEN }}
+          api-key: rnd_mbSiIRXfmNEII2AGkkM2Hn7qboFy
