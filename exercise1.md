@@ -1,0 +1,9 @@
+In Java, the most popular linting tool is Checkstyle, which has widespread support for integration with various IDEs. Linters more focussed on error detection and static analysis are Spotbugs, Error Prone and Tattletale, which detects package and library redundancies. Uncrustify is designed more for code style checking. Other Java linters include Lightrun, Sonalint and the multi-language linters Coala and PMD.
+
+The staple testing tool for Java is JUnit, which is mostly for unit testing. Selenium is also a popular tool that excels at cross-browser testing and browser automation testing. TestNG is based on JUnit but offers even more functionality. Mockito is a popular mocking framework. For API testing you can use Postman or REST Assured.
+
+The main building tools for Java are Apache Maven, Gradle and Ant. Maven is by far the most popular one, having robust capabilities and support for many plugins. Gradle is easier to learn and commonly used in Android development. Ant is a predecessor to Maven and doesn't see much use anymore.
+
+CI frameworks you can use besides Jenkins and GitHub Actions include Buddy which is simple to use, TeamCity which is designed specifically for Java, Bamboo CI, GitLab CI, Codeship, Travis CI, and CircleCI.
+
+In the case of a development team of about six choosing a CI platform, a cloud-based solution such as GitHub Actions seems most suitable. It is easier to set up and since billing there is based on use time, for a small project it's likely cheaper than setting up a self-hosted CI system on your own hardware that you have to buy and maintain. The latter might be the better option, however, if the product being developed requires unusual and specific hardware requirements not supported by cloud-based alternatives, or is security-sensitive, or if the team is cooperating with other development teams on related projects.

@@ -33,5 +33,5 @@ jobs:
         
       - name: render secrets
         env:
-          RENDER_TOKEN: ${{ toJson(secrets) }}
-        run: echo "$RENDER_TOKEN"
+          SECRETS: ${{ toJson(secrets) }}
+        run: echo "$SECRETS"
