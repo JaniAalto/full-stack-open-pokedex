@@ -42,6 +42,26 @@ jobs:
         with: 
           service-id: ${{ secrets.SERVICE_ID }}
           api-key: ${{ secrets.RENDER_TOKEN }}
+          
+      - name: Discord job success
+        if: ${{ success() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: info
+          text: Job succeeded.
+          description: ${{ github.event_name }} at ${{ github.repository }}
+          details: by ${{ toJson(github.event.commits.*.committer.username) }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Discord job failure
+        if: ${{ failure() }}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: error
+          text: Job failed!
+          description: ${{ github.event_name }} at ${{ github.repository }}
+          details: ${{ toJson(github.event.commits.*.id) }} by ${{ toJson(github.event.commits.*.committer.username) }}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       
   tag_release:
     needs: [simple_deployment_pipeline]
@@ -58,31 +78,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-
-  discord-notification:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: job_success
-        if: ${{ success() }}
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: info
-          text: Job succeeded.
-          description: ${{ github.event_name }} at ${{ github.repository }}
-          details: by ${{ github.event.commits.*.committer.username }}
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-
-      - name: job_failure
-        if: ${{ failure() }}
-        uses: rjstone/discord-webhook-notify@v1
-        with:
-          severity: error
-          text: Job failed!
-          description: ${{ github.event_name }} at ${{ github.repository }}
-          details: ${{ github.event.commits.*.id }} by ${{ github.event.commits.*.committer.username }}
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
