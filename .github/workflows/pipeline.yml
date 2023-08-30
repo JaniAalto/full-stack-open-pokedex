@@ -37,7 +37,7 @@ jobs:
           wait-on: http://localhost:5000
 
       - name: Render deployment
-        if: ${{ github.event_name == 'push' && !contains(github.event.commits.*.message, '#skip') }}
+        if: ${{ github.event_name == 'push' && !contains(github.event.commits[0].message, '#skip') }}
         uses: johnbeynon/render-deploy-action@v0.0.8
         with: 
           service-id: ${{ secrets.SERVICE_ID }}
@@ -50,7 +50,7 @@ jobs:
           severity: info
           text: Job succeeded.
           description: ${{ github.event_name }} at ${{ github.repository }}
-          details: by ${{ toJson(github.event.commits.*.committer.username) }}
+          details: by ${{ github.event.commits[0].committer.username }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Discord job failure
@@ -60,7 +60,7 @@ jobs:
           severity: error
           text: Job failed!
           description: ${{ github.event_name }} at ${{ github.repository }}
-          details: ${{ toJson(github.event.commits.*.id) }} by ${{ toJson(github.event.commits.*.committer.username) }}
+          details: ${{ github.event.commits[0].id }} by ${{ github.event.commits[0].committer.username }}
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       
   tag_release:
@@ -73,7 +73,7 @@ jobs:
           node-version: '16'
 
       - name: Bump version and push tag
-        if: ${{ github.event_name == 'push' && !contains(github.event.commits.*.message, '#skip') }}
+        if: ${{ github.event_name == 'push' && !contains(github.event.commits[0].message, '#skip') }}
         uses: anothrNick/github-tag-action@1.67.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
