@@ -23,12 +23,12 @@ jobs:
 
       - name: commit messages
         env:
-          COMMIT_MESSAGES: ${{ toJson(github.event.commits.message) }}
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
 
       - name: render token
         env:
-          RENDER_TOKEN: ${{ toJson(env.RENDER_TOKEN) }}
+          RENDER_TOKEN: ${{ toJson(secrets.RENDER_TOKEN) }}
         run: echo "$RENDER_TOKEN"
         
       - name: render secrets
