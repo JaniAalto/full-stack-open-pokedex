@@ -41,7 +41,7 @@ jobs:
         uses: johnbeynon/render-deploy-action@v0.0.8
         with: 
           service-id: ${{ secrets.SERVICE_ID }}
-          api-key: ${{ secrets.wrong_token }}
+          api-key: ${{ secrets.RENDER_TOKEN }}
       
   tag_release:
     needs: [simple_deployment_pipeline]
