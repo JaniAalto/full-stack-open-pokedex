@@ -1,4 +1,4 @@
-In Java, the most popular linting tool is Checkstyle, which has widespread support for integration with various IDEs. Linters more focussed on error detection and static analysis are Spotbugs, Error Prone and Tattletale, which detects package and library redundancies. Uncrustify is designed more for code style checking. Other Java linters include Lightrun, Sonalint and the multi-language linters Coala and PMD.
+In Java, the most popular linting tool is Checkstyle, which has widespread support for integration with various IDEs. Linters more focused on error detection and static analysis are Spotbugs, Error Prone and Tattletale, which detects package and library redundancies. Uncrustify is designed more for code style checking. Other Java linters include Lightrun, Sonalint and the multi-language linters Coala and PMD.
 
 The staple testing tool for Java is JUnit, which is mostly for unit testing. Selenium is also a popular tool that excels at cross-browser testing and browser automation testing. TestNG is based on JUnit but offers even more functionality. Mockito is a popular mocking framework. For API testing you can use Postman or REST Assured.
 
